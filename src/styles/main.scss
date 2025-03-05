@@ -57,7 +57,6 @@ button {
 .header {
   grid-area: header;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: v.$spacing-md v.$spacing-xl;
@@ -77,7 +76,6 @@ button {
     flex-grow: 1;
     order: 2;
     margin-right: 700px;
-    
 
     &-link {
       font-weight: 100;
@@ -95,7 +93,6 @@ button {
   position: absolute;
   top: v.$spacing-md;
   right: v.$spacing-xl;
-  padding: 0;
   display: flex;
   gap: v.$spacing-md;
   z-index: 30;
@@ -246,7 +243,6 @@ button {
 
     &-item {
       border: 2px solid v.$secondary-color;
-     
       padding: 5px;
       overflow: hidden;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -286,14 +282,13 @@ button {
     height: 80%;
     max-width: 100%;
     object-fit: contain;
-
-   
+    margin-top: 170px;
   }
 
   &__image {
-    width: 650px;
-    height: 90%;
-    object-fit: cover;
+    width: 550px;
+    height: 80%;
+    object-fit: contain;
     margin-left: 40px;
     margin-top: 100px;
     position: relative;
@@ -305,13 +300,12 @@ button {
     display: flex;
     flex-direction: column;
     background-color: v.$white;
-    width: 640px;
+    width: 540px;
     height: auto;
-    bottom: 150px;
+    bottom: 90px;
     position: relative;
-    margin-left: 40px;
+    margin-left: 45px;
     z-index: 3;
- 
   }
 
   &__header {
@@ -372,16 +366,6 @@ button {
     }
   }
 
-  &__info-container {
-    display: flex;
-    flex-direction: column;
-    background-color: v.$white;
-  
-    padding: v.$spacing-md;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    flex-grow: 1;
-  }
-
   &__actions {
     display: flex;
     gap: v.$spacing-md;
@@ -422,150 +406,35 @@ button {
   &__stats {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
     padding: v.$spacing-md v.$spacing-lg;
     color: v.$white;
     width: 480px;
-    margin-left: -10px;
-    top: 250px;
+    margin-left: -50px;
+    top: 220px;
     position: absolute;
-    bottom: 0;
-    transform: translateY(50%);
     z-index: 4;
+    gap: 60px;
 
     &-item {
-      text-align: center;
-      flex: 1;
-      padding: v.$spacing-xs;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: v.$spacing-xs;
+      flex: 1;
+      padding: v.$spacing-xs;
 
       &-number {
         font-size: v.$font-size-lg;
         font-weight: 700;
         color: v.$primary-color;
-        margin-bottom: 0;
       }
 
       &-label {
         font-size: v.$font-size-sm;
         color: v.$gray-light;
-       
         letter-spacing: 1px;
       }
     }
   }
 }
 
-/* Media Queries */
-@media (max-width: v.$breakpoint-lg) {
-  .main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .header {
-    flex-direction: column;
-    gap: v.$spacing-md;
-    padding: v.$spacing-md;
-
-    &__logo {
-      order: 1;
-      align-self: flex-start;
-      margin-bottom: v.$spacing-sm;
-    }
-
-    &__nav {
-      order: 2;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-left: 0;
-    }
-  }
-
-  .aside {
-    position: static;
-    justify-content: center;
-    padding: v.$spacing-md;
-    width: 100%;
-    margin-bottom: v.$spacing-md;
-  }
-
-  .hero {
-    &__title {
-      font-size: v.$font-size-xl;
-
-      &-highlight {
-        &::before {
-          top: -25px;
-          width: 30px;
-          height: 30px;
-        }
-      }
-    }
-
-    &__description {
-      max-width: 100%;
-    }
-  }
-
-  .nft-card {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 70px;
-    height: auto;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    overflow: visible;
-    
-    &__content {
-      margin-top: -15px;
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 50px;
-      height: 280px;
-      padding: v.$spacing-md;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    &__info-container {
-      padding: v.$spacing-sm;
-    }
-    
-    &__owner {
-      padding-bottom: v.$spacing-xs;
-      margin-bottom: v.$spacing-xs;
-    }
-    
-    &__title {
-      font-size: v.$font-size-md;
-      margin-bottom: v.$spacing-xs;
-    }
-    
-    &__bid {
-      margin-bottom: v.$spacing-xs;
-      padding: v.$spacing-xs;
-    }
-    
-    &__actions {
-      margin-top: auto;
-      margin-bottom: v.$spacing-xs;
-    }
-    
-    &__stats {
-      width: 90%;
-      margin-left: 5%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transform: translateY(50%);
-    }
-  }
-}
