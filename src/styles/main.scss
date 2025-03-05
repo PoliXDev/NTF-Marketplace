@@ -1,1 +1,571 @@
 @use './variables' as v;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Belgrano&display=swap');
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: v.$font-family;
+  color: v.$secondary-color;
+  background-color: v.$white;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+/* Contenedor principal */
+#page {
+  min-height: 100vh;
+  display: grid;
+  margin-left: 40px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+}
+
+/* Header */
+.header {
+  grid-area: header;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: v.$spacing-md v.$spacing-xl;
+  position: relative;
+  z-index: 10;
+
+  &__logo {
+    width: 120px;
+    height: auto;
+    order: 1;
+  }
+
+  &__nav {
+    display: flex;
+    gap: v.$spacing-xl;
+    justify-content: center;
+    flex-grow: 1;
+    order: 2;
+    margin-right: 700px;
+    
+
+    &-link {
+      font-weight: 100;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: v.$primary-color;
+      }
+    }
+  }
+}
+
+/* Aside */
+.aside {
+  position: absolute;
+  top: v.$spacing-md;
+  right: v.$spacing-xl;
+  padding: 0;
+  display: flex;
+  gap: v.$spacing-md;
+  z-index: 30;
+  align-items: center;
+  margin-right: 65px;
+
+  &__signup {
+    color: v.$white;
+    font-weight: 600;
+    padding: v.$spacing-xs v.$spacing-sm;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: v.$primary-color;
+    }
+  }
+
+  &__signin {
+    background-color: v.$primary-color;
+    color: v.$white;
+    font-weight: 600;
+    padding: v.$spacing-xs v.$spacing-md;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken(v.$primary-color, 10%);
+    }
+  }
+}
+
+/* Main */
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  padding: 0 v.$spacing-xl v.$spacing-xl;
+  gap: v.$spacing-lg;
+  position: relative;
+  overflow: visible;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-lg;
+    z-index: 10;
+  }
+
+  &__right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+  }
+}
+
+/* Hero Section */
+.hero {
+  padding: v.$spacing-xl 0;
+
+  &__title {
+    font-size: 60px;
+    font-weight: 100;
+    margin-bottom: v.$spacing-md;
+    color: v.$secondary-color;
+    position: relative;
+    font-family: 'Belgrano', serif;
+
+    &-highlight {
+      position: relative;
+      display: inline-block;
+      color: v.$secondary-color;
+      font-family: 'Belgrano', serif;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        height: 150px;
+        background-image: url('/img/nft-lazo.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+
+  &__description {
+    font-size: v.$font-size-md;
+    max-width: 80%;
+    margin-bottom: v.$spacing-lg;
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-md;
+
+    &-button {
+      width: 150px;
+      background-color: v.$primary-color;
+      color: v.$white;
+      font-weight: 600;
+      padding: v.$spacing-sm v.$spacing-lg;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(v.$primary-color, 10%);
+      }
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: v.$spacing-xs;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      color: v.$secondary-color;
+
+      &:hover {
+        color: v.$primary-color;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+/* Feature Artwork */
+.feature {
+  &__title {
+    font-size: v.$font-size-xl;
+    font-weight: 700;
+    margin-bottom: v.$spacing-lg;
+    color: v.$secondary-color;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$spacing-md;
+
+    &-item {
+      border: 2px solid v.$secondary-color;
+     
+      padding: 5px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* NFT Card */
+.nft-card {
+  height: 960px;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  background-color: v.$secondary-color;
+  position: absolute;
+  top: -110px;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__logo {
+    height: 80%;
+    max-width: 100%;
+    object-fit: contain;
+
+   
+  }
+
+  &__image {
+    width: 650px;
+    height: 90%;
+    object-fit: cover;
+    margin-left: 40px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    padding: v.$spacing-md;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$white;
+    width: 640px;
+    height: auto;
+    bottom: 150px;
+    position: relative;
+    margin-left: 40px;
+    z-index: 3;
+ 
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: v.$spacing-md;
+    margin-bottom: v.$spacing-md;
+    border-bottom: 1px solid v.$gray-light;
+  }
+
+  &__owner {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+
+    &-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+      gap: v.$spacing-xs;
+    }
+
+    &-name {
+      font-size: v.$font-size-sm;
+      color: v.$gray;
+      font-weight: 500;
+    }
+  }
+
+  &__title {
+    font-size: v.$font-size-md;
+    font-weight: 700;
+    color: v.$secondary-color;
+    margin: 0;
+  }
+
+  &__bid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: v.$spacing-xs;
+
+    &-label {
+      font-size: v.$font-size-sm;
+      color: v.$gray;
+    }
+
+    &-price {
+      font-size: v.$font-size-lg;
+      font-weight: 700;
+      color: v.$secondary-color;
+    }
+  }
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$white;
+  
+    padding: v.$spacing-md;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    flex-grow: 1;
+  }
+
+  &__actions {
+    display: flex;
+    gap: v.$spacing-md;
+    margin-top: v.$spacing-sm;
+
+    &-bid {
+      flex: 1;
+      background-color: v.$primary-color;
+      color: v.$white;
+      font-weight: 600;
+      padding: v.$spacing-sm v.$spacing-md;
+      border-radius: v.$border-radius-sm;
+      text-align: center;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(v.$primary-color, 10%);
+      }
+    }
+
+    &-view {
+      flex: 1;
+      font-weight: 500;
+      color: v.$secondary-color;
+      text-align: center;
+      padding: v.$spacing-sm 0;
+      border: 1px solid v.$gray-light;
+      border-radius: v.$border-radius-sm;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: v.$primary-color;
+        border-color: v.$primary-color;
+      }
+    }
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: v.$spacing-md v.$spacing-lg;
+    color: v.$white;
+    width: 480px;
+    margin-left: -10px;
+    top: 250px;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    z-index: 4;
+
+    &-item {
+      text-align: center;
+      flex: 1;
+      padding: v.$spacing-xs;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: v.$spacing-xs;
+
+      &-number {
+        font-size: v.$font-size-lg;
+        font-weight: 700;
+        color: v.$primary-color;
+        margin-bottom: 0;
+      }
+
+      &-label {
+        font-size: v.$font-size-sm;
+        color: v.$gray-light;
+       
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+/* Media Queries */
+@media (max-width: v.$breakpoint-lg) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: v.$spacing-md;
+    padding: v.$spacing-md;
+
+    &__logo {
+      order: 1;
+      align-self: flex-start;
+      margin-bottom: v.$spacing-sm;
+    }
+
+    &__nav {
+      order: 2;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: 0;
+    }
+  }
+
+  .aside {
+    position: static;
+    justify-content: center;
+    padding: v.$spacing-md;
+    width: 100%;
+    margin-bottom: v.$spacing-md;
+  }
+
+  .hero {
+    &__title {
+      font-size: v.$font-size-xl;
+
+      &-highlight {
+        &::before {
+          top: -25px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    &__description {
+      max-width: 100%;
+    }
+  }
+
+  .nft-card {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    height: auto;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    overflow: visible;
+    
+    &__content {
+      margin-top: -15px;
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 50px;
+      height: 280px;
+      padding: v.$spacing-md;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    &__info-container {
+      padding: v.$spacing-sm;
+    }
+    
+    &__owner {
+      padding-bottom: v.$spacing-xs;
+      margin-bottom: v.$spacing-xs;
+    }
+    
+    &__title {
+      font-size: v.$font-size-md;
+      margin-bottom: v.$spacing-xs;
+    }
+    
+    &__bid {
+      margin-bottom: v.$spacing-xs;
+      padding: v.$spacing-xs;
+    }
+    
+    &__actions {
+      margin-top: auto;
+      margin-bottom: v.$spacing-xs;
+    }
+    
+    &__stats {
+      width: 90%;
+      margin-left: 5%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translateY(50%);
+    }
+  }
+}
